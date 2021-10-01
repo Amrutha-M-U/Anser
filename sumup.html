@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SUMMARIZER</title>
+</head>
+<body>
+
+<div id="news">
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+<script type="text/javascript" src="./public/driver.js"></script>
+<script type="text/javascript" src="./public/summarizer.js"></script>
+
+<script language="javascript">
+	console.log("sumup 1") ;
+	$.get(
+		"/getoriginalnews",
+		function(data){
+			console.log("sumpup 2");
+			for(var i = 0 ; i < data.length ; ++i ){
+				var x = sumUp(data[i].original) ;
+				var test = { 'original' : data[i].original , 'summary' : x } ;
+				data[i] = test ;
+			}
+			var tt = data ;
+			console.log ( tt ) ;
+
+			$.post(
+				"/skm" ,
+				{
+					data : tt 
+				},
+				function(data){
+					console.log(data) ;
+				}
+				);
+
+	});
+</script>
+
+</body>
+</html>

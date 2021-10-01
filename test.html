@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TEST</title>
+</head>
+<body>
+
+<div id="news">
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+<script type="text/javascript" src="./public/driver.js"></script>
+<script type="text/javascript" src="./public/summarizer.js"></script>
+
+<script language="javascript">
+	var content='' , htt='';
+
+
+	$.get(
+		"https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=690af39f335643d8b6af0044d7949d1a",
+		function(data){
+			for ( var i = 0 ; i < data.articles.length ; ++i ){
+				htt = '' ;
+				htt = htt + '<br> Title :' + data.articles[i].title ;
+				htt = htt + '<br> Author :' + data.articles[i].author ;
+				htt = htt + '<br> Published At :' + data.articles[i].publishedAt ;
+				htt = htt + '<br> URL :' + data.articles[i].url ;
+				htt = htt + '<br> Title :' + data.articles[i].urlToImage ;
+				htt = htt + '<br><br>' ;
+
+				$.post(
+					"/addnews",
+					{
+						title : data.articles[i].title,
+						url : data.articles[i].url,
+						imageUrl : data.articles[i].urlToImage,
+						publishedAt : data.articles[i].publishedAt,
+						category : 'top_stories'				
+					},
+					function(data){
+						if ( data == "done" ){
+							$('#news').html(htt); 
+							console.log("DONE");
+						} else {
+							console.log ("ERROR");
+						}
+					}
+					);
+			}
+		}
+		);
+
+	$.get(
+		"https://newsapi.org/v1/articles?source=sky-sports-news&sortBy=top&apiKey=690af39f335643d8b6af0044d7949d1a",
+		function(data){
+			for ( var i = 0 ; i < data.articles.length ; ++i ){
+				htt = '' ;
+				htt = htt + '<br> Title :' + data.articles[i].title ;
+				htt = htt + '<br> Author :' + data.articles[i].author ;
+				htt = htt + '<br> Published At :' + data.articles[i].publishedAt ;
+				htt = htt + '<br> URL :' + data.articles[i].url ;
+				htt = htt + '<br> Title :' + data.articles[i].urlToImage ;
+				htt = htt + '<br><br>' ;
+
+				$.post(
+					"/addnews",
+					{
+						title : data.articles[i].title,
+						url : data.articles[i].url,
+						imageUrl : data.articles[i].urlToImage,
+						publishedAt : data.articles[i].publishedAt,
+						category : 'sports'				
+					},
+					function(data){
+						if ( data == "done" ){
+							$('#news').html(htt); 
+							console.log("DONE");
+						} else {
+							console.log ("ERROR");
+						}
+					}
+					);
+			}
+		}
+		);
+
+	$.get(
+		" https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=690af39f335643d8b6af0044d7949d1a",
+		function(data){
+			for ( var i = 0 ; i < data.articles.length ; ++i ){
+				htt = '' ;
+				htt = htt + '<br> Title :' + data.articles[i].title ;
+				htt = htt + '<br> Author :' + data.articles[i].author ;
+				htt = htt + '<br> Published At :' + data.articles[i].publishedAt ;
+				htt = htt + '<br> URL :' + data.articles[i].url ;
+				htt = htt + '<br> Title :' + data.articles[i].urlToImage ;
+				htt = htt + '<br><br>' ;
+
+				$.post(
+					"/addnews",
+					{
+						title : data.articles[i].title,
+						url : data.articles[i].url,
+						imageUrl : data.articles[i].urlToImage,
+						publishedAt : data.articles[i].publishedAt,
+						category : 'entertainment'				
+					},
+					function(data){
+						if ( data == "done" ){
+							$('#news').html(htt); 
+							console.log("DONE");
+						} else {
+							console.log ("ERROR");
+						}
+					}
+					);
+			}
+		}
+		);
+
+	$.get(
+		"https://newsapi.org/v1/articles?source=business-insider&sortBy=top&apiKey=690af39f335643d8b6af0044d7949d1a",
+		function(data){
+			for ( var i = 0 ; i < data.articles.length ; ++i ){
+				htt = '' ;
+				htt = htt + '<br> Title :' + data.articles[i].title ;
+				htt = htt + '<br> Author :' + data.articles[i].author ;
+				htt = htt + '<br> Published At :' + data.articles[i].publishedAt ;
+				htt = htt + '<br> URL :' + data.articles[i].url ;
+				htt = htt + '<br> Title :' + data.articles[i].urlToImage ;
+				htt = htt + '<br><br>' ;
+
+				$.post(
+					"/addnews",
+					{
+						title : data.articles[i].title,
+						url : data.articles[i].url,
+						imageUrl : data.articles[i].urlToImage,
+						publishedAt : data.articles[i].publishedAt,
+						category : 'business'				
+					},
+					function(data){
+						if ( data == "done" ){
+							$('#news').html(htt); 
+							console.log("DONE");
+						} else {
+							console.log ("ERROR");
+						}
+					}
+					);
+			}
+		}
+		);
+
+	$.get(
+		"https://newsapi.org/v1/articles?source=engadget&sortBy=top&apiKey=690af39f335643d8b6af0044d7949d1a",
+		function(data){
+			for ( var i = 0 ; i < data.articles.length ; ++i ){
+				htt = '' ;
+				htt = htt + '<br> Title :' + data.articles[i].title ;
+				htt = htt + '<br> Author :' + data.articles[i].author ;
+				htt = htt + '<br> Published At :' + data.articles[i].publishedAt ;
+				htt = htt + '<br> URL :' + data.articles[i].url ;
+				htt = htt + '<br> Title :' + data.articles[i].urlToImage ;
+				htt = htt + '<br><br>' ;
+
+				$.post(
+					"/addnews",
+					{
+						title : data.articles[i].title,
+						url : data.articles[i].url,
+						imageUrl : data.articles[i].urlToImage,
+						publishedAt : data.articles[i].publishedAt,
+						category : 'tech'				
+					},
+					function(data){
+						if ( data == "done" ){
+							$('#news').html(htt); 
+							console.log("DONE");
+						} else {
+							console.log ("ERROR");
+						}
+					}
+					);
+			}
+		}
+		);
+</script>
+
+</body>
+</html>
